@@ -1,6 +1,7 @@
 .container{
     height: calc(100vh - 100px);
     display: flex;
+    width: 100%;
 }
 
 .left{
@@ -86,4 +87,44 @@
     border-radius: 5px;
     font-weight: 500;
     cursor: pointer;
+}
+@media screen and (max-width:480px) {
+    .container{
+        height: auto;
+        text-align:center;
+        flex-direction: column;
+        margin-top: 20px;
+        overflow: hidden;
+    }
+    .imgContainer{
+        width: 70vw;
+        height: 70vw;
+    }
+    .title{
+        margin: 5px;
+    }
+    .sizes{
+        width: 100%;
+        padding: 0px 20px;
+    }
+    .ingredients{
+        flex-direction: column;
+    }
+    .option{
+        margin: 10px;
+        font-size: 18px;
+    }
+    .checkbox{
+        width: 25px;
+
+    }
+    .quantity,.button{
+        height: 50px;
+        padding: 10px 20px;
+        border-radius: 4px;
+    }
+}
+
+@media screen and (max-width:900px){
+    
 }

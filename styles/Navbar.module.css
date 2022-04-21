@@ -1,3 +1,4 @@
+
 .container{
 height: 100px;
 padding: 0px 50px;
@@ -51,6 +52,7 @@ justify-content: flex-end;
 }
 .cart{
     position: relative;
+    cursor: pointer;
 }
 .counter{
     position:absolute;
@@ -67,4 +69,42 @@ justify-content: flex-end;
     font-weight: bold;
     color: #d1411e;
 
+}
+@media screen  and (max-width:480px){
+    .item:nth-child(2)
+{
+    display: none;
+}    
+.item:nth-child(1){
+    flex:3;
+}
+.counter{
+    top:-10px;
+    right:-15px;
+}
+.callButton{
+    margin-left: -40px;
+}
+.cart{
+    margin-right: -20px;
+}
+}
+@media screen and (max-width:900px) {
+    .container{
+        overflow: hidden;
+    }
+    .listItem:nth-child(4){
+        display:none;
+    }
+    .listItem:nth-child(5){
+        display:none;
+    }
+    .listItem:nth-child(6){
+        display:none;
+    }
+    .counter{
+        top:-10px;
+        right:-17px;
+    }
+    
 }
