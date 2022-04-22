@@ -3,18 +3,34 @@ import Image from 'next/image'
 import styles from '../styles/Cart.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect,useState } from 'react'
+import { useRouter } from 'next/router'
+import { reset } from '../redux/cartSlice'
+import axios from 'axios';
 import {
-    PayPalScriptProvider,
+    PayPalScriptProvider, 
     PayPalButtons,
     usePayPalScriptReducer
 } from "@paypal/react-paypal-js";
+import OrderDetail from '../components/OrderDetail'
 const Cart = () => {
+    const cart = useSelector(state=>state.cart)
     const [open, setOpen]=useState(false);
-    const amount="2"
+    const [cash, setCash]=useState(false)
+    const amount=cart.total;
     const currency = "USD"
     const style={layout:"vertical"}
     const dispatch = useDispatch();
-    const cart = useSelector(state=>state.cart)
+    const router  = useRouter();
+    const createOrder = async (data)=>{
+        try{
+const res = await axios.post("http://localhost:3000/api/orders",data);
+res.status===201 &&  router.push("/orders/"+res.data._id)
+dispatch(reset())
+        }
+        catch(err){
+            console.log(err);
+        }
+    }
 
 
 // Custom component to wrap the PayPalButtons and handle currency changes
@@ -59,8 +75,15 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
                         });
                 }}
                 onApprove={function (data, actions) {
-                    return actions.order.capture().then(function () {
+                    return actions.order.capture().then(function (details) {
                         // Your code here after capture the order
+
+                        const shipping = details.purchase_units[0].shipping;
+                        createOrder({customer: shipping.name.full_name,
+                            address:shipping.address.address_line_1,
+                        total:cart.total,
+                        method: 1
+                        })
                     });
                 }}
             />
@@ -72,6 +95,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
     <div className={styles.container}>
     <div className={styles.left}>
         <table className={styles.table}>
+            <tbody>
            <tr className={styles.trTitle}>
                <th>Product</th>
                <th>Name</th>
@@ -80,8 +104,11 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
                <th>Quantity</th>
                <th>Total</th>
             </tr>
-                    {cart.products.map(product=>(
+                </tbody>
+                <tbody>
 
+                    {cart.products.map(product=>(
+                        
                         <tr className={styles.tr} key={product._id}>
                 <td>
                     <div className={styles.imgContainer}>
@@ -96,8 +123,8 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
                 </td>
                 <td>
                     {product.extras.map((extra)=>(
-                    <span>{extra.text}, </span>
-                    ))}
+                        <span>{extra.text}, </span>
+                        ))}
                 </td>
                 <td>
                    <span className={styles.price}>${product.price}</span> 
@@ -106,10 +133,12 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
                     <span className={styles.quantity}>{product.quantity}</span>
                 </td>
                 <td>
-                    <span className={styles.total}>${product.price * product.quantity}</span>
+                    <span className={styles.total}>${(product.price * product.quantity).toFixed(2)}</span>
                 </td>
             </tr>
             ))}
+            </tbody>
+            
             
         </table>
     </div>
@@ -120,20 +149,20 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
             <b className={styles.totalTextTitle}>Subtotal:</b>{cart.total}
         </div>
         <div className={styles.totalText}>
-            <b className={styles.totalTextTitle}>Discount:</b>{cart.total*0.01}
+            <b className={styles.totalTextTitle}>Discount:</b>{(cart.total*0.01).toFixed(2)}
         </div>
         <div className={styles.totalText}>
             <b className={styles.totalTextTitle}>Total:</b>{cart.total - cart.total*0.01}
         </div>
         {open ? (
 <div className={styles.paymentMethods}>
-    <button className={styles.payButton}>CASH ON DELIVERY</button>
+    <button className={styles.payButton} onClick={()=>setCash(true)}>CASH ON DELIVERY</button>
 <PayPalScriptProvider
                 options={{
                     "client-id": "AYAhtEWI_B7yqnoagdxGTY-QpFWS9s1g9Kwey57RUxfhXpOCq0YEsc_OlJqD1e7KFY0k5Vz1pu8j_rLj",
                     components: "buttons",
                     currency: "USD",
-                    "disable-funding":"credit,card,p24"
+                    'disable-funding':"credit,card,p24"
                 }}
             >
 				<ButtonWrapper
@@ -146,6 +175,9 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
 <button className={styles.button} onClick={()=>setOpen(true)}>CHECKOUT NOW!</button>}
     </div>
     </div>
+    {cash && <OrderDetail total={cart.total}
+    createOrder={createOrder}
+    />}
     </div> 
   )
 }

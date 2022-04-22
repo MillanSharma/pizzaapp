@@ -1,0 +1,41 @@
+.container{
+    padding: 50px;
+    display: flex;
+
+}
+.item{
+    flex:1;
+}
+.table{
+    width: 100%;
+    border-spacing: 20px;
+    text-align: left;
+}
+.editButton{
+border: none;
+color: white;
+padding:5px;
+cursor:pointer;
+background-color: blue;
+border-radius: 4px;
+margin-right: 4px;
+
+}
+.deleteButton{
+    border: none;
+    color: white;
+    padding:5px;
+    cursor:pointer;
+    background-color: red;
+    border-radius: 4px;
+
+}
+.nextStageButton{
+    border: none;
+    color: white;
+    padding:5px;
+    cursor:pointer;
+    background-color: teal;
+    border-radius: 4px;
+
+}

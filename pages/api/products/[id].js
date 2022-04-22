@@ -12,21 +12,12 @@ try{
     res.status(500).json(err)
 }
 }
-        if(method==='PUT'){
-            try{
-                const product = await Product.create(req.body);
-                res.status(200).json(product)
-            }
-            catch(err){
-                    res.status(500).json(err);
-            }
-            
-    }
+        if(method==='PUT'){}
 
     if(method==='DELETE'){
         try{
-            const product = await Product.create(req.body);
-            res.status(200).json(product)
+            const product = await Product.findByIdAndDelete(id);
+            res.status(200).json("the product is deleted")
         }
         catch(err){
                 res.status(500).json(err);
