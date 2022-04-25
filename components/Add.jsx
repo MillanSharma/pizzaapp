@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from "../styles/Add.module.css"
 import axios from 'axios'
-import {useRouter } from 'next/router';
 import {useState} from 'react'
 const Add = ({setClose}) => {
 const [file , setFile]=useState(null)
