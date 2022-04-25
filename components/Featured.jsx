@@ -4,9 +4,9 @@ import styles from '../styles/Featured.module.css'
 import {AiOutlineArrowLeft} from 'react-icons/fa'
 const Featured = () => {
     const images=[
-        "/img/1.png",
-        "/img/2.png",
-        "/img/3.png"
+        "https://res.cloudinary.com/badalmera/image/upload/v1650883633/uploads/feature_images/1_joo8ag.png",
+        "https://res.cloudinary.com/badalmera/image/upload/v1650883634/uploads/feature_images/2_zvgj2g.png",
+        "https://res.cloudinary.com/badalmera/image/upload/v1650883632/uploads/feature_images/3_oevaxk.png"
     ];
     const [index, setIndex]=useState(0)
     const handleArrow=(direction)=>{
@@ -22,7 +22,7 @@ const Featured = () => {
     <div className={styles.container}>
        <div className={styles.arrowContainer} style={{left:0}} onClick={()=>handleArrow("l")}>
            {/* <AiOutlineArrowLeft /> */}
-           <Image src='/img/arrowl.png' alt='' layout='fill' objectFit='contain'/>
+           <Image src='https://res.cloudinary.com/badalmera/image/upload/v1650883632/uploads/feature_images/arrowl_jxu5un.png' alt='' layout='fill' objectFit='contain'/>
        </div>
         <div className={styles.wrapper} style={{transform:`translateX(${-100*index}vw)`}}>
             {images.map((img, index)=>(
@@ -33,7 +33,7 @@ const Featured = () => {
             ))}
         </div>
      <div className={styles.arrowContainer} style={{right:0}} onClick={()=>handleArrow("r")}>
-        <Image src="/img/arrowr.png" alt="" layout='fill' objectFit='contain'/>
+        <Image src="https://res.cloudinary.com/badalmera/image/upload/v1650883631/uploads/feature_images/arrowr_v60gyh.png" alt="" layout='fill' objectFit='contain'/>
     
      </div>
     </div>

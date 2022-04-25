@@ -8,7 +8,7 @@ const Navbar =()=>{
         <div className={styles.container}>
             <div className={styles.item}> 
             <div className={styles.callButton}>
-                <Image src='/img/telephone.png' 
+                <Image src='https://res.cloudinary.com/badalmera/image/upload/v1650883631/uploads/feature_images/telephone_tuwxvi.png' 
         width="90px" height="90px" alt=""/>
                 </div>
                 <div className={styles.texts}>
@@ -23,7 +23,7 @@ const Navbar =()=>{
                     </Link>
                     <li className={styles.listItem}>Products</li>
                     <li className={styles.listItem}>Menu</li>
-                    <Image src="/img/e-pizza.png" alt='' width="59px" height="59px"
+                    <Image src="https://res.cloudinary.com/badalmera/image/upload/v1650883632/uploads/feature_images/e-pizza_tcrhtj.png" alt='' width="59px" height="59px"
                     objectFit='contain'
                     />
                     <li className={styles.listItem}>Events</li>
@@ -37,7 +37,7 @@ const Navbar =()=>{
                 <Link href="/cart" passHref>
             <div className={styles.item}> 
             <div className={styles.cart}>
-                <Image src="/img/cart.png" alt="" width="59px" height='59px'/>
+                <Image src="https://res.cloudinary.com/badalmera/image/upload/v1650883631/uploads/feature_images/cart_bhkmie.png" alt="" width="59px" height='59px'/>
                 <div className={styles.counter}>{quantity}</div>
             </div>
             </div>

@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <div className={styles.container}>
       <div className={styles.item}>
-<Image src='/img/footer.jpg' layout='fill' alt=""/>
+<Image src='https://res.cloudinary.com/badalmera/image/upload/v1650883633/uploads/feature_images/footer_cg1tvw.jpg' layout='fill' alt=""/>
         </div>
         <div className={styles.item}>
           <div className={styles.card}>
