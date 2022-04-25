@@ -24,6 +24,7 @@ const Navbar =()=>{
                     <li className={styles.listItem}>Products</li>
                     <li className={styles.listItem}>Menu</li>
                     <Image src="/img/e-pizza.png" alt='' width="59px" height="59px"
+                    objectFit='contain'
                     />
                     <li className={styles.listItem}>Events</li>
                     <li className={styles.listItem}>Blogs</li>

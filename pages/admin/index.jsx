@@ -3,6 +3,7 @@ import React from 'react'
 import Image from 'next/image'
 import axios from 'axios'
 import {useState} from "react"
+import Edit from '../../components/Edit';
 const Index = ({orders, products}) => {
     const [pizzaList , setPizzaList]=useState(products);
     const [orderList, setOrderList]=useState(orders);
@@ -22,6 +23,8 @@ const Index = ({orders, products}) => {
             res.status(500).json(err);
         }
     }
+  
+    
     const handleDelete=async(id)=>{
 try{
 const res = await axios.delete("http://localhost:3000/api/products/"+id)
@@ -62,7 +65,7 @@ catch(err){
             <td>{product.title}</td>
             <td>${product.prices[0]}</td>
             <td>
-            <button className={styles.editButton}>Edit</button>
+            {/* <button className={styles.editButton} onClick={()=>handleEdit(product._id)}>Edit</button> */}
             <button className={styles.deleteButton} onClick={()=>handleDelete(product._id)}>Delete</button>
             </td>
         </tr>

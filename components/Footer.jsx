@@ -1,11 +1,12 @@
 import React from 'react'
 import styles from '../styles/Footer.module.css'
 import Image from 'next/image'
+import Link from "next/link"
 const Footer = () => {
   return (
     <div className={styles.container}>
       <div className={styles.item}>
-<Image src='/img/footer.jpg' layout='fill'/>
+<Image src='/img/footer.jpg' layout='fill' alt=""/>
         </div>
         <div className={styles.item}>
           <div className={styles.card}>
@@ -36,6 +37,11 @@ const Footer = () => {
               SATURDAY - SUNDAY 
 <br />12:30 - 24:00
             </p>
+          </div>
+          <div>
+          <Link href="/admin" passHref>
+            <button className={styles.adminButton}>Admin Login</button>
+                    </Link>
           </div>
       </div>
       </div>

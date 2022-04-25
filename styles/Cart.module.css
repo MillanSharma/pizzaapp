@@ -67,7 +67,7 @@ display: flex;
     
 
 }
-@media screen and (max-width:480px) {
+@media (max-width:480px) {
     .container{
         flex-direction: column;
         padding: 20px;
@@ -113,5 +113,18 @@ display: none;
     }
     .wrapper{
         width: 100%;
+    }
+}
+@media (min-width:481px) and (max-width:992px) {
+    .container{
+        flex-direction: column;
+        padding: 20px;
+    }
+  
+    
+    .right{
+        flex: 1;
+        width: 400px;
+        align-items: right;
     }
 }

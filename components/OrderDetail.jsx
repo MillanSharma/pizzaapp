@@ -10,7 +10,7 @@ createOrder({customer, address,total,method:0})
   return (
     <div className={styles.container}>OrderDetail
  <div className={styles.wrapper}>
-     <h1d className={styles.title} >You will pay ${} after delivery</h1d>
+     <h1 className={styles.title} >You will pay ${total} after delivery</h1>
 <div className={styles.item}>
     <label className={styles.label}>Name Surname</label>
     <input placeholder="Name" type="text" 

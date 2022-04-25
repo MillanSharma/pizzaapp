@@ -125,6 +125,18 @@
     }
 }
 
-@media screen and (max-width:900px){
+@media (min-width:481px) and (max-width:900px){
+    .container{
+        display: flex;
+        width: 100%;
+    }
+    .left{
+       align-items:flex-start;
+    }
+    .sizes{
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+    }
     
 }
