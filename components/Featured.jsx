@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Image from 'next/Image';
+import Image from 'next/image';
 import styles from '../styles/Featured.module.css'
 import {AiOutlineArrowLeft} from 'react-icons/fa'
 const Featured = () => {

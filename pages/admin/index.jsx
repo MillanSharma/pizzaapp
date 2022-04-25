@@ -3,7 +3,6 @@ import React from 'react'
 import Image from 'next/image'
 import axios from 'axios'
 import {useState} from "react"
-import Edit from '../../components/Edit';
 const Index = ({orders, products}) => {
     const [pizzaList , setPizzaList]=useState(products);
     const [orderList, setOrderList]=useState(orders);
