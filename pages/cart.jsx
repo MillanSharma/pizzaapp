@@ -125,7 +125,7 @@ const ButtonWrapper = ({ currency, showSpinner }) => {
                 </td>
                 <td>
                     {product.extras.map((extra)=>(
-                        <span>{extra.text}, </span>
+                        <span key={extra._id}>{extra.text}, </span>
                         ))}
                 </td>
                 <td>

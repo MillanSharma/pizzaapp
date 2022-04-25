@@ -19,7 +19,6 @@ export default function Home({pizzaList,admin}) {
       {admin && <AddButton setClose={setClose}/>}
       <PizzaList pizzaList={pizzaList}/>
       {!close && <Add setClose={setClose}/>}
-      {!close && <Edit setClose={setClose}/>}
      </div>
   )
 }
